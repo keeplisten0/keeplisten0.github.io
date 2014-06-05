@@ -45,7 +45,8 @@
 
   function getFacebookInfo() {
     FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
+      console.log(response);
+	  console.log('Access Token: '+response.authResponse.accessToken);
       document.getElementById('status').innerHTML =
         'You are logged in as ' + response.name + '.';
     });
@@ -56,7 +57,6 @@
 
 <fb:login-button scope="public_profile,email" onlogin="loginClicked();">
 </fb:login-button>
-hi
 <div id="status">
 </div>
 
