@@ -46,7 +46,6 @@
   function getFacebookInfo() {
     FB.api('/me', function(response) {
       console.log(response);
-	  console.log('Access Token: '+response.authResponse.accessToken);
       document.getElementById('status').innerHTML =
         'You are logged in as ' + response.name + '.';
     });
