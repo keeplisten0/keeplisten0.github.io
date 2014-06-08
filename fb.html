@@ -61,10 +61,7 @@
       FB.ui(
         {
          method: 'feed',
-         name: 'The Facebook SDK for Javascript',
-         description: (
-            ''
-         ),
+         link: 'github.com'
         },
         function(response) {
           if (response && response.post_id) {
@@ -75,6 +72,12 @@
         }
       );
   }
+  
+  function postMessage() {
+	  $.post( "http://14.198.242.3/ning/httprequest.php", { func: "getNameAndTime" }, function( data ) {
+	    console.log( data );
+	  });
+  }
 </script>
 
 
@@ -82,8 +85,9 @@
 <fb:login-button scope="public_profile,email,user_likes" onlogin="loginClicked();">
 </fb:login-button>
 <div id="status"></div>
+<div height="100px"></div>
 <div><input type="button" onClick="getLikes()" value="Get likes"></div>
 <div><input type="button" onClick="submitFeed()" value="Submit Feed"</div>
-
+<div><input type="button" onClick="postMessage()" value="Post Message"</div>
 </body>
 </html>
