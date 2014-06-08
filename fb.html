@@ -50,14 +50,19 @@
         'You are logged in as ' + response.name + '.';
     });
   }
+  
+  function getFriends() {
+    FB.api('/me/likes', function(response) {
+      console.log(response);
+  }
 </script>
 
 
 
 <fb:login-button scope="public_profile,email" onlogin="loginClicked();">
 </fb:login-button>
-<div id="status">
-</div>
+<div id="status"></div>
+<div onClick="getFriends()">Get friends now</div>
 
 </body>
 </html>
