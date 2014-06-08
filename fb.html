@@ -51,10 +51,29 @@
     });
   }
   
-  function getFriends() {
+  function getLikes() {
     FB.api('/me/likes', function(response) {
       console.log(response);
   });
+  }
+  
+  fucntion submitFeed() {
+      FB.ui(
+        {
+         method: 'feed',
+         name: 'The Facebook SDK for Javascript',
+         description: (
+            ''
+         ),
+        },
+        function(response) {
+          if (response && response.post_id) {
+            alert('Post was published.');
+          } else {
+            alert('Post was not published.');
+          }
+        }
+      );
   }
 </script>
 
@@ -63,7 +82,8 @@
 <fb:login-button scope="public_profile,email,user_likes" onlogin="loginClicked();">
 </fb:login-button>
 <div id="status"></div>
-<div onClick="getFriends()">Get friends now</div>
+<div><input type="button" onClick="getLikes()">Get friends now</input></div>
+<div><input type="button" onClick="submitFeed()">Get friends now</input></div>
 
 </body>
 </html>
