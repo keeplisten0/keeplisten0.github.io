@@ -75,9 +75,13 @@
   }
   
   function postMessage() {
-	  $.post( "http://14.198.242.3/ning/httprequest.php", { func: "getNameAndTime" }, function( data ) {
-	    console.log( data );
-	  });
+	  FB.login(function(){
+		  	FB.api('/me/feed',
+		  		'post', {message: 'Hello, world!'}, function(response) {
+		  			console.log(response);
+		  		}
+	  		);
+	  }, {scope: 'publish_actions'});
   }
 </script>
 
@@ -86,7 +90,7 @@
 <fb:login-button scope="public_profile,email,user_likes" onlogin="loginClicked();">
 </fb:login-button>
 <div id="status"></div>
-<div height="100px"></div>
+<p><p><p>
 <div><input type="button" onClick="getLikes()" value="Get likes"></div>
 <div><input type="button" onClick="submitFeed()" value="Submit Feed"</div>
 <div><input type="button" onClick="postMessage()" value="Post Message"</div>
